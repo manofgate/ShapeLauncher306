@@ -1,13 +1,12 @@
 package shapelauncher;
 
+import java.awt.Graphics;
+
 public class Shape {
-
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+	int x;
+	int y;
+	
+	public void draw(Graphics g){
+		
 	}
-
 }
