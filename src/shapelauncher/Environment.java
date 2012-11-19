@@ -19,4 +19,8 @@ public class Environment {
 	public void calculatePath(int x, int y){
 		
 	}
+	
+	public void calculateRotation(){
+		
+	}
 }
