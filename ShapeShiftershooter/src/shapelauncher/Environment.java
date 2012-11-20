@@ -16,11 +16,21 @@ public class Environment {
 		
 	}
 	
-	public void calculatePath(int x, int y){
-		
+	public Path calculatePath(int x, int y, int velocity){
+		Path p = new Path();
+		return p;
 	}
 	
 	public void calculateRotation(){
 		
 	}
+
+	public int getWind() {
+		return wind;
+	}
+
+	public void setWind(int wind) {
+		this.wind = wind;
+	}
+	
 }
