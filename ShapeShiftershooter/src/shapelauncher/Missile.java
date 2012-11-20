@@ -15,7 +15,9 @@ public class Missile {
 	public void move(int dx, int dy){
 		
 	}
-	
+	public boolean isWithin(Shape target){
+		return false;
+	}
 	public int getXPosition(){
 		return x;
 	}

@@ -1,5 +1,7 @@
 package tests;
 
+import java.awt.Point;
+
 import junit.framework.Assert;
 
 import org.junit.Before;
@@ -19,8 +21,15 @@ public class EnvironmentTests {
 	@Test
 	public void calcPath(){
 		environ.setWind(0);
-		Path path = environ.calculatePath(2, 2, 2);
-		Assert.assertEquals(path, new Path());
+		Path path = environ.calculatePath(2, 2, 10, 45);
+		//checks starting point
+		Assert.assertEquals(path.getPoints().contains(new Point(2,2)), true);
 	}
-
+	@Test
+	public void calcPath2(){
+		environ.setWind(0);
+		Path path = environ.calculatePath(2, 2, 10, 45);
+		//checks middle point
+		Assert.assertEquals(path.getPoints().contains(new Point(12,2)), true);
+	}
 }

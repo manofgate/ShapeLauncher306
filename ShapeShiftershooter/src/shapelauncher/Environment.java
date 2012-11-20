@@ -16,7 +16,7 @@ public class Environment {
 		
 	}
 	
-	public Path calculatePath(int x, int y, int velocity){
+	public Path calculatePath(int x, int y, int velocity, int angle){
 		Path p = new Path();
 		return p;
 	}
@@ -24,7 +24,7 @@ public class Environment {
 	public void calculateRotation(){
 		
 	}
-
+	
 	public int getWind() {
 		return wind;
 	}
