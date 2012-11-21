@@ -3,7 +3,7 @@ package shapelauncher;
 import java.awt.Graphics;
 
 public class Environment {
-	private Missile missle;
+	private Missile missile;
 	private int wind;
 	private Shape target;
 	private int gravity;
@@ -31,6 +31,22 @@ public class Environment {
 
 	public void setWind(int wind) {
 		this.wind = wind;
+	}
+
+	public void launchMissile(int i, int j) {
+		
+	}
+
+	public Missile getMissile() {
+		return missile;
+	}
+
+	public int getGravity() {
+		return gravity;
+	}
+
+	public void setGravity(int gravity) {
+		this.gravity = gravity;
 	}
 	
 }
