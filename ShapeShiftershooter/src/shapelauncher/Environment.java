@@ -9,7 +9,10 @@ public class Environment {
 	private int gravity;
 	
 	public void run(){
-		
+		if(missile != null) {
+			missile.run();
+			missile.accelerate(0, -gravity);
+		}
 	}
 	
 	public void draw(Graphics g){
@@ -33,8 +36,9 @@ public class Environment {
 		this.wind = wind;
 	}
 
-	public void launchMissile(int i, int j) {
-		
+	public void launchMissile(int magnitude, int angle) {
+		this.missile = new Missile();
+		this.missile.accelerateAngle(magnitude, angle);
 	}
 
 	public Missile getMissile() {
