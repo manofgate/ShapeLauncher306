@@ -14,36 +14,38 @@ public class Missile {
 		velocityY = 0;
 		theta = 0;
 	}
-	
+
 	public void accelerateAngle(int magnitude, int angle) {
-		
+		int dx = (int) (Math.cos(Math.toRadians(angle)) * magnitude);
+		int dy = (int) (Math.sin(Math.toRadians(angle)) * magnitude);
+		accelerate(dx, dy);
 	}
-	
+
 	public void accelerate(int dx, int dy) {
 		velocityX += dx;
 		velocityY += dy;
 	}
-	
+
 	public void run() {
-		x += velocityX;
-		y += velocityY;
+		move(velocityX, velocityY);
+
 	}
-	
+
 	public void stop() {
 		velocityX = 0;
 		velocityY = 0;
 	}
 
 	public void move(int dx, int dy) {
-
+		x += dx;
+		y += dy;
+		if (y < 0)
+			y = 0;
 	}
 
 	public void moveTo(int x, int y) {
-
-	}
-
-	public boolean isWithin(Shape target) {
-		return false;
+		this.x = x;
+		this.y = y;
 	}
 
 	public int getXPosition() {
@@ -59,7 +61,7 @@ public class Missile {
 	}
 
 	public void rotate(int dtheta) {
-
+		this.theta += dtheta;
 	}
 
 	public int getVelocityX() {
@@ -69,8 +71,8 @@ public class Missile {
 	public int getVelocityY() {
 		return velocityY;
 	}
-	
+
 	public void calcAngle() {
-		
+		this.theta = (int) Math.toDegrees(Math.atan(velocityY / velocityX));
 	}
 }
