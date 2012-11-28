@@ -19,10 +19,10 @@ public class Environment {
 		
 	}
 	
-	public Path calculatePath(int x, int y, int velocity, int angle){
-		Path p = new Path();
-		return p;
-	}
+//	public Path calculatePath(int x, int y, int velocity, int angle){
+//		Path p = new Path();
+//		return p;
+//	}
 	
 	public void calculateRotation(){
 		
