@@ -2,7 +2,7 @@ package shapelauncher;
 
 import java.awt.Graphics;
 
-public class Shape {
+public abstract class Shape {
 	int x;
 	int y;
 	
@@ -10,7 +10,6 @@ public class Shape {
 		
 	}
 	
-	public void draw(Graphics g){
-		
-	}
+	public abstract void draw(Graphics g);
+	public abstract boolean contains(Missile m);
 }

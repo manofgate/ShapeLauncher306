@@ -1,5 +1,6 @@
 package shapelauncher;
 
+import java.awt.Graphics;
 import java.awt.Point;
 
 public class Triangle extends Shape {
@@ -10,4 +11,14 @@ public class Triangle extends Shape {
 	}
 	Point vertex1;
 	Point vertex2;
+	@Override
+	public void draw(Graphics g) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public boolean contains(Missile m) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
