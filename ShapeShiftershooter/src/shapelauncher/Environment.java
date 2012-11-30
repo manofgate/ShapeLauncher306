@@ -2,11 +2,16 @@ package shapelauncher;
 
 import java.awt.Graphics;
 
-public class Environment {
+import javax.swing.JPanel;
+
+public class Environment extends JPanel {
 	private Missile missile;
 	private int wind;
 	private Shape target;
 	private int gravity;
+	public Environment(){
+		missile = new Missile();
+	}
 	
 	public void run(){
 		if(missile != null) {
@@ -15,8 +20,9 @@ public class Environment {
 		}
 	}
 	
-	public void draw(Graphics g){
-		
+	public void paintComponent(Graphics g){
+		super.paintComponent(g);
+		missile.getShape().draw(g);
 	}
 	
 //	public Path calculatePath(int x, int y, int velocity, int angle){

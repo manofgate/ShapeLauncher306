@@ -13,13 +13,15 @@ public class Circle extends Shape {
 
 	@Override
 	public void draw(Graphics g) {
-		// TODO Auto-generated method stub
+		g.fillOval(x, y, radius, radius);
 		
 	}
 
 	@Override
 	public boolean contains(Missile m) {
-		// TODO Auto-generated method stub
+		if(x-radius >m.getXPosition() && x+radius < m.getXPosition()
+				&& y+radius< m.getYPosition() && y-radius > m.getYPosition())
+			return true;
 		return false;
 	}
 	

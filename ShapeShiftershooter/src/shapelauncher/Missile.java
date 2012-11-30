@@ -13,6 +13,7 @@ public class Missile {
 		velocityX = 0;
 		velocityY = 0;
 		theta = 0;
+		shape = new Circle(x,y,10);
 	}
 
 	public void accelerateAngle(int magnitude, int angle) {
@@ -74,5 +75,8 @@ public class Missile {
 
 	public void calcAngle() {
 		this.theta = (int) Math.toDegrees(Math.atan(velocityY / velocityX));
+	}
+	public Shape getShape(){
+		return shape;
 	}
 }
