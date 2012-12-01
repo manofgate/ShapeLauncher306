@@ -15,13 +15,18 @@ import javax.swing.JMenuItem;
 
 public class GameScreen extends JFrame{
 	Environment environment;
+	AnglePanel anglePanel;
 	
 	public GameScreen() {
 		setSize(800, 600);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setTitle("Shape Shifting Shooter");
+		
 		environment = new Environment();
+		anglePanel = new AnglePanel();
+		
 		add(environment, BorderLayout.CENTER);
+		add(anglePanel, BorderLayout.WEST);
 		
 		JMenuBar menu = new JMenuBar();
 		setJMenuBar(menu);
