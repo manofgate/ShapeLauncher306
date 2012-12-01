@@ -23,7 +23,7 @@ public class GameScreen extends JFrame{
 		setTitle("Shape Shifting Shooter");
 		
 		environment = new Environment();
-		anglePanel = new AnglePanel();
+		anglePanel = new AnglePanel(environment);
 		
 		add(environment, BorderLayout.CENTER);
 		add(anglePanel, BorderLayout.WEST);
