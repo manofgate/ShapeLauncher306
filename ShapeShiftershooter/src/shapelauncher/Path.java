@@ -1,12 +1,13 @@
 package shapelauncher;
 
+import java.awt.Graphics;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Path {
 	List<Point> points;
-
+	
 	public Path(List<Point> points) {
 		super();
 		this.points = points;
@@ -30,5 +31,9 @@ public class Path {
 	public List<Point> getPoints() {
 		return points;
 	} 
-	
+	public void draw(Graphics g){
+		for(Point p : points){
+			g.fillOval(p.x, p.y, 2, 2);
+		}
+	}
 }

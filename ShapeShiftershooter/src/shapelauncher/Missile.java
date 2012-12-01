@@ -8,15 +8,16 @@ public class Missile {
 	private int velocityX, velocityY;
 	private int theta;
 	private Shape shape;
+	int which;
 	Random rand = new Random();
 	public Missile() {
-		x = 0;
-		y = 0;
+		x = 10;
+		y = 450;
 		velocityX = 0;
 		velocityY = 0;
 		theta = 0;
-		rand.setSeed(rand.nextLong());
-		int which = rand.nextInt() %3;
+		//rand.setSeed(rand.nextLong());
+		 which = rand.nextInt() %3;
 		if(which == 0){
 			shape = new Circle(x,y,10);
 		}

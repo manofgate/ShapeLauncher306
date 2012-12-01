@@ -5,7 +5,8 @@ import java.awt.Graphics;
 public class Rectangle extends Shape {
 	
 	public Rectangle(int x, int y, int width, int height) {
-		super(x, y);
+		this.x = x;
+		this.y = y;
 		this.width = width;
 		this.height = height;
 	}

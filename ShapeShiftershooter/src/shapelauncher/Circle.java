@@ -5,7 +5,8 @@ import java.awt.Graphics;
 public class Circle extends Shape {
 	
 	public Circle(int x, int y, int radius) {
-		super(x, y);
+		this.x = x;
+		this.y = y;
 		this.radius = radius;
 	}
 
@@ -13,7 +14,7 @@ public class Circle extends Shape {
 
 	@Override
 	public void draw(Graphics g) {
-		g.fillOval(x, y, radius, radius);
+		g.fillOval(this.x, this.y, radius, radius);
 		
 	}
 
