@@ -1,19 +1,31 @@
 package shapelauncher;
 
+import java.util.Random;
+
 public class Missile {
 	private int x;
 	private int y;
 	private int velocityX, velocityY;
 	private int theta;
 	private Shape shape;
-
+	Random rand = new Random();
 	public Missile() {
 		x = 0;
 		y = 0;
 		velocityX = 0;
 		velocityY = 0;
 		theta = 0;
-		shape = new Circle(x,y,10);
+		rand.setSeed(rand.nextLong());
+		int which = rand.nextInt() %3;
+		if(which == 0){
+			shape = new Circle(x,y,10);
+		}
+		else if(which == 1){
+			shape = new Rectangle(x, y, 10, 10);
+		}
+		else{
+			shape = new Triangle(x, y, x-10, y+10, x+10, y+10);
+		}
 	}
 
 	public void accelerateAngle(int magnitude, int angle) {

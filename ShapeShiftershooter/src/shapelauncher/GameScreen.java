@@ -5,8 +5,13 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 
 public class GameScreen extends JFrame{
 	Environment environment;
@@ -14,10 +19,29 @@ public class GameScreen extends JFrame{
 	public GameScreen() {
 		setSize(800, 600);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setTitle("Shape Shifting Shooter");
 		environment = new Environment();
 		add(environment, BorderLayout.CENTER);
+		
+		JMenuBar menu = new JMenuBar();
+		setJMenuBar(menu);
+		menu.add(createFileMenu());
 	}
-	
+	private JMenu createFileMenu() {
+		JMenu menu = new JMenu("File"); 
+		menu.add(createFileExitItem());
+		return menu;
+	}
+	private JMenuItem createFileExitItem() {
+		JMenuItem item = new JMenuItem("Exit");
+		class MenuItemListener implements ActionListener {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		}
+		item.addActionListener(new MenuItemListener());
+		return item;
+	}
 	/*@Override
 	public void paint(Graphics g) {
 		super.paintComponents(g);
