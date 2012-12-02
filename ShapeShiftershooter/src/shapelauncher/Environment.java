@@ -1,6 +1,8 @@
 package shapelauncher;
 
 import java.awt.Graphics;
+import java.awt.Point;
+import java.util.List;
 import java.util.Random;
 
 import javax.swing.JPanel;
@@ -11,38 +13,59 @@ public class Environment extends JPanel {
 	private Shape target;
 	private int gravity;
 	private Path path;
+	private int numStage =0;
+	private int size = 20;
 	Random rand = new Random();
 	public Environment(){
-		missile = new Missile();
-		if(missile.getShape() instanceof Circle ){
-			target = new Circle(300, 450, 15);
+		//missile = new Missile(numStage%3);
+		int rx = rand.nextInt()%300 + 300;
+		int ry = rand.nextInt()%40 + 400;
+		wind = rand.nextInt(3);
+		gravity = rand.nextInt(2) + 2;
+		if(numStage%3 ==0){
+			target = new Circle(rx, ry, size);
 		}
-		else if(missile.getShape() instanceof Rectangle){
-			target = new Rectangle(200, 450, 15, 15);
+		else if(numStage%3 == 1){
+			target = new Rectangle(rx, ry, size, size);
 		}
 		else{
-			target = new Triangle(200, 450, 200-15, 450+15, 200+15, 450+15);
+			target = new Triangle(rx, ry, rx-size, ry+size, rx+size, ry+size);
 		}
-		wind = rand.nextInt(3);
-		gravity = rand.nextInt(3) + 5;
+		
 	}
 	
 	public void run(){
 		if(missile != null) {
-			missile.run();
-			missile.accelerate(0, -gravity);
+			while(true){
+				missile.run();
+				missile.accelerate(0, -gravity);
+				System.out.println(missile.getYPosition());
+				if(missile.getYPosition() == 0) break;
+				repaint();
+				for(int i = 100000; i>0; --i){
+					i=i;
+				}
+				
+			
+			}
 		}
 	}
 	
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
-		missile.getShape().draw(g);
+		if(missile != null)
+			missile.getShape().draw(g);
 		target.draw(g);
 		if(path != null){
 			path.draw(g);
 		}
+		//repaint();
 	}
 	
+	public void calcuclatepath(int mag, int angle){
+		path = new Path(mag, angle, gravity, 0 ,numStage);
+		repaint();
+	}
 	public void calculateRotation(){
 		
 	}
@@ -56,8 +79,10 @@ public class Environment extends JPanel {
 	}
 
 	public void launchMissile(int magnitude, int angle) {
-		this.missile = new Missile();
+		this.missile = new Missile(numStage%3);
+		System.out.println(magnitude + ": mag it is");
 		this.missile.accelerateAngle(magnitude, angle);
+		repaint();
 	}
 
 	public Missile getMissile() {

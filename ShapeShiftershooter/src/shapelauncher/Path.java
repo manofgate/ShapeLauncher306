@@ -7,21 +7,22 @@ import java.util.List;
 
 public class Path {
 	List<Point> points;
-	
-	public Path(List<Point> points) {
+	private int stage;
+	public Path(List<Point> points, int stage) {
 		super();
+		this.stage = stage;
 		this.points = points;
 	}
 
-	public Path(int magnitude, int angle, int gravity, int wind) {
+	public Path(int magnitude, int angle, int gravity, int wind, int numStage) {
 		points = new ArrayList<Point>();
-		Missile missile = new Missile();
-		points.add(new Point(0, 0));
+		Missile missile = new Missile(numStage%3);
+		points.add(new Point(0,0));
 		missile.accelerateAngle(magnitude, angle);
 		missile.run();
 		while(true) {
 			points.add(new Point(missile.getXPosition(), missile.getYPosition()));
-			if(missile.getYPosition() == 0) break;
+			if(missile.getYPosition() == 0 ) break;
 			missile.accelerate(wind, -gravity);
 			missile.run();
 		}
@@ -33,7 +34,7 @@ public class Path {
 	} 
 	public void draw(Graphics g){
 		for(Point p : points){
-			g.fillOval(p.x, p.y, 2, 2);
+			g.fillOval(p.x +10,450 - p.y, 4, 4);
 		}
 	}
 }

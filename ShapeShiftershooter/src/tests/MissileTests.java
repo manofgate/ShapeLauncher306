@@ -16,7 +16,7 @@ public class MissileTests {
 
 	@Before
 	public void setUpMissle() {
-		m = new Missile();
+		m = new Missile(0);
 	}
 
 	@Test
