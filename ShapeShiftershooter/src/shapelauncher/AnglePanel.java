@@ -32,6 +32,7 @@ public class AnglePanel extends JPanel{
 			public void actionPerformed(ActionEvent arg0) {
 				try{
 					angle = Double.parseDouble(inputedAngle.getText());
+					
 				} catch(NumberFormatException nfe){
 					inputedAngle.setText("Sorry, I can't read that.");
 				}
