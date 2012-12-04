@@ -32,8 +32,9 @@ public class Path {
 	public List<Point> getPoints() {
 		return points;
 	} 
-	public void draw(Graphics g){
-		for(Point p : points){
+	public void draw(Graphics g, int frame){
+		for(int i = 0; i < frame; i++){
+			Point p = points.get(i);
 			g.fillOval(p.x +10,450 - p.y, 4, 4);
 		}
 	}

@@ -13,6 +13,7 @@ public class Missile {
 	private int size = 15;
 	int xDisp;
 	int yDisp;
+	
 	public Missile(int nStage) {
 		x = 0;
 		y = 0;
@@ -48,7 +49,6 @@ public class Missile {
 		move(velocityX, velocityY);
 		shape.x = x+ 10;
 		shape.y = y+450;
-		
 	}
 
 	public void stop() {
@@ -95,6 +95,7 @@ public class Missile {
 	public void calcAngle() {
 		this.theta = (int) Math.toDegrees(Math.atan(velocityY / velocityX));
 	}
+	
 	public Shape getShape(){
 		return shape;
 	}

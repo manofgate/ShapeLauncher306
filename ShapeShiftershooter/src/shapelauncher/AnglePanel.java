@@ -5,22 +5,31 @@ import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JSlider;
 import javax.swing.JTextField;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
-public class AnglePanel extends JPanel{
+public class AnglePanel extends JPanel {
 	public double angle = 0;
-	public JPanel panel;
-	public JTextField inputedAngle;
+	public final JPanel panel;
 	int x = 25;
 	int y = 500;
 	int size = 100;
 	AngleComponent anglePart;
+	public final JSlider magnitudeSlider;
+	private JSlider angleSlider;
 	
 	public AnglePanel(final Environment environment){
 		panel = new JPanel();
@@ -28,8 +37,6 @@ public class AnglePanel extends JPanel{
 		setLayout(new GridLayout(0,1));
 		super.
 		setBorder(new TitledBorder(new EtchedBorder(), "Choose your angle:"));
-		inputedAngle = new JTextField("Angle");
-		add(inputedAngle);
 
 		JButton set = new JButton("Set Angle");
 		set.addActionListener(new ActionListener() {
@@ -37,39 +44,43 @@ public class AnglePanel extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				try{
-					angle = Double.parseDouble(inputedAngle.getText());
-					environment.launchMissile(25, (int) angle);
+					angle = angleSlider.getValue();
+					environment.launchMissile(magnitudeSlider.getValue(), (int) angleSlider.getValue());
 					environment.run();
-					environment.calcuclatepath(25, (int) angle);
-				} catch(NumberFormatException nfe){
-					inputedAngle.setText("Sorry, I can't read that.");
-				}
+					environment.calculatePath(magnitudeSlider.getValue(), (int) angle);
+					environment.checkCollision();
+				} catch(NumberFormatException nfe){ }
 			}
 			
-		});	
-		
-		JButton display = new JButton("Display angle");
-		display.addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				angle = Double.parseDouble(inputedAngle.getText());
-				if(anglePart == null){
-					anglePart = new AngleComponent(x,y,size,(int)angle);
-					add(anglePart);
-					validate();
-				}
-				else{
-					anglePart.setTheta((int) angle);
-				}
-				repaint(); // repaint the board
-			}
 		});
 		
+		anglePart = new AngleComponent(x, y, 50, 45);
+		
+		JLabel angleLabel = new JLabel("Choose Angle:");
+		
+		angleSlider = new JSlider(0, 90);
+		angleSlider.setValue(45);
+		angleSlider.addChangeListener(new ChangeListener() {
+			
+			@Override
+			public void stateChanged(ChangeEvent arg0) {
+				anglePart.setTheta(angleSlider.getValue());
+			}
+		});
+
+		JLabel magnitudeLabel = new JLabel("Choose Magnitude:");
+		
+		magnitudeSlider = new JSlider(0, 50);
+		magnitudeSlider.setValue(10);
+		
 		//Other options that we could have here: A launch button and a magnitude/set magnitide pair
-		add(display);
 		add(set);
 		add(panel);
+        add(angleLabel);
+        add(angleSlider);
+        add(magnitudeLabel);
+		add(magnitudeSlider);
+		add(anglePart);
 	}
 	
 	public void paintComponent(Graphics g){
