@@ -25,7 +25,7 @@ public class AnglePanel extends JPanel {
 	public double angle = 0;
 	public final JPanel panel;
 	int x = 25;
-	int y = 500;
+	int y = 5;
 	int size = 100;
 	AngleComponent anglePart;
 	public final JSlider magnitudeSlider;
@@ -38,7 +38,7 @@ public class AnglePanel extends JPanel {
 		super.
 		setBorder(new TitledBorder(new EtchedBorder(), "Choose your angle:"));
 
-		JButton set = new JButton("Set Angle");
+		JButton set = new JButton("Fire");
 		set.addActionListener(new ActionListener() {
 
 			@Override
@@ -73,9 +73,14 @@ public class AnglePanel extends JPanel {
 		magnitudeSlider = new JSlider(0, 50);
 		magnitudeSlider.setValue(10);
 		
+		JLabel gravity = new JLabel("Gravity: " + environment.getGravity());
+		JLabel wind = new JLabel("Wind: " + environment.getWind());
+		
 		//Other options that we could have here: A launch button and a magnitude/set magnitide pair
 		add(set);
-		add(panel);
+		add(gravity);
+		add(wind);
+//		add(panel);
         add(angleLabel);
         add(angleSlider);
         add(magnitudeLabel);

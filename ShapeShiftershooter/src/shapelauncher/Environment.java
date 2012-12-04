@@ -21,12 +21,16 @@ public class Environment extends JPanel {
 	
 	public Environment(){
 		//missile = new Missile(numStage%3);
-		wind = rand.nextInt(3);
-		gravity = rand.nextInt(2) + 1;
+		setAccelerations();
 		createTarget();
 		frame = 0;
 	}
 	
+	private void setAccelerations() {
+		wind = rand.nextInt(3);
+		gravity = rand.nextInt(2) + 1;
+	}
+
 	private void createTarget() {
 		int rx = rand.nextInt()%300 + 300;
 		int ry = rand.nextInt()%40 + 400;
@@ -132,6 +136,7 @@ public class Environment extends JPanel {
 			numStage++;
 			missile = null;
 			createTarget();
+//			setAccelerations();
 		}
 	}
 	
