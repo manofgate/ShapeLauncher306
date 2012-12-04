@@ -48,7 +48,7 @@ public class Missile {
 	public void run() {
 		move(velocityX, velocityY);
 		shape.x = x+ 10;
-		shape.y = y+450;
+		shape.y = 450-y;
 	}
 
 	public void stop() {
