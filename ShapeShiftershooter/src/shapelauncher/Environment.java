@@ -26,11 +26,13 @@ public class Environment extends JPanel {
 		frame = 0;
 	}
 	
+	//Generate random values for wind and gravity
 	private void setAccelerations() {
 		wind = rand.nextInt(3);
 		gravity = rand.nextInt(2) + 1;
 	}
 
+	//Generate a randomly placed target to shoot for
 	private void createTarget() {
 		int rx = rand.nextInt()%300 + 300;
 		int ry = rand.nextInt()%40 + 400;
@@ -58,6 +60,7 @@ public class Environment extends JPanel {
 //		}
 	}
 	
+	//re paint missile and target and path
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		if(missile != null)
@@ -69,6 +72,7 @@ public class Environment extends JPanel {
 		//repaint();
 	}
 	
+	//create a path object based on the curret magnitude and angle
 	public void calculatePath(int mag, int angle){
 		path = new Path(mag, angle, gravity, wind, numStage);
 		repaint();
@@ -82,6 +86,7 @@ public class Environment extends JPanel {
 		this.wind = wind;
 	}
 
+	//create a missile object and animate it in  a thread.
 	public void launchMissile(int magnitude, int angle) {
 		this.missile = new Missile(numStage%3);
 		System.out.println(magnitude + ": mag it is");
@@ -95,6 +100,8 @@ public class Environment extends JPanel {
 				missile.accelerate(wind, -gravity);
 				missile.run();
 				repaint();
+				
+				//while the missile hasn't yet hit the ground, continue animation
 				while(missile.getYPosition() > 0) {
 					System.out.println("Run");
 					missile.accelerate(wind, -gravity);
@@ -123,9 +130,8 @@ public class Environment extends JPanel {
 		this.gravity = gravity;
 	}
 
-	
+	//check if the missile has hit the target
     public void checkCollision() {
-    	System.out.println("yea dod");
     	System.out.println("" + target.contains(missile) + missile.getXPosition() + " "  + target.x);
     	System.out.println(missile.getYPosition() + ": "+ target.y);
 		if(target.contains(missile)) {

@@ -14,6 +14,7 @@ public class Missile {
 	int xDisp;
 	int yDisp;
 	
+	//Missile class to represent a missile that has been fired. nStage is the shape.
 	public Missile(int nStage) {
 		x = 0;
 		y = 0;

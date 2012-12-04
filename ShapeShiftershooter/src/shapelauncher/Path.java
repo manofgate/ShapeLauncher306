@@ -14,6 +14,7 @@ public class Path {
 		this.points = points;
 	}
 
+	//Creates a new missile object, then runs it until it hits the ground to generate a set of points where the missile will go.
 	public Path(int magnitude, int angle, int gravity, int wind, int numStage) {
 		points = new ArrayList<Point>();
 		Missile missile = new Missile(numStage%3);

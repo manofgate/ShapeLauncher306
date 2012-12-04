@@ -31,6 +31,8 @@ public class AnglePanel extends JPanel {
 	public final JSlider magnitudeSlider;
 	private JSlider angleSlider;
 	
+	
+	//Panel to represent the angle controls on the left of the screen.
 	public AnglePanel(final Environment environment){
 		panel = new JPanel();
 		setPreferredSize(new Dimension(150, 500));
