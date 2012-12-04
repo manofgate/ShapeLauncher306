@@ -24,7 +24,7 @@ public class Environment extends JPanel {
 		int rx = rand.nextInt()%300 + 300;
 		int ry = rand.nextInt()%40 + 400;
 		wind = rand.nextInt(3);
-		gravity = rand.nextInt(2) + 2;
+		gravity = rand.nextInt(2) + 1;
 		if(numStage%3 ==0){
 			target = new Circle(rx, ry, size);
 		}
@@ -94,9 +94,10 @@ public class Environment extends JPanel {
 					System.out.println("Run");
 					missile.accelerate(wind, -gravity);
 					missile.run();
+					checkCollision();
 					repaint();
 					try {
-						Thread.sleep(200);
+						Thread.sleep(32);
 					} catch (Exception e) {}
 				}
 			}
@@ -119,8 +120,9 @@ public class Environment extends JPanel {
 
 	
     public void checkCollision() {
-		// TODO Auto-generated method stub
-		
+		if(target.contains(missile)) {
+			numStage++;
+		}
 	}
 	
 }

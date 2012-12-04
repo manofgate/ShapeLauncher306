@@ -20,8 +20,8 @@ public class Circle extends Shape {
 
 	@Override
 	public boolean contains(Missile m) {
-		if(x-radius >m.getXPosition() && x+radius < m.getXPosition()
-				&& y+radius< m.getYPosition() && y-radius > m.getYPosition())
+		if(x-radius < m.getXPosition() && x+radius > m.getXPosition()
+				&& y+radius > m.getYPosition() && y-radius < m.getYPosition())
 			return true;
 		return false;
 	}
