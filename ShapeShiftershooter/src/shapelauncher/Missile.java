@@ -21,7 +21,7 @@ public class Missile {
 		velocityY = 0;
 		theta = 0;
 		xDisp = x+10;
-		yDisp = y+450;
+		yDisp = 450-y;
 		//rand.setSeed(rand.nextLong());
 		if(nStage == 0){
 			shape = new Circle(xDisp,yDisp,size);
