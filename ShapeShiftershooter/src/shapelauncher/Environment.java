@@ -120,7 +120,11 @@ public class Environment extends JPanel {
 
 	
     public void checkCollision() {
+    	System.out.println("yea dod");
+    	System.out.println("" + target.contains(missile) + missile.getXPosition() + " "  + target.x);
+    	System.out.println(missile.getYPosition() + ": "+ target.y);
 		if(target.contains(missile)) {
+			System.out.println("word");
 			numStage++;
 		}
 	}
