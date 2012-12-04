@@ -26,6 +26,8 @@ public class Triangle extends Shape {
 	}
 	@Override
 	public boolean contains(Missile m) {
-		return p.contains(m.getXPosition(), m.getYPosition());
+		int realX = m.getXPosition() +10;
+		int realY = 450 - m.getYPosition();
+		return p.contains(realX, realY);
 	}
 }

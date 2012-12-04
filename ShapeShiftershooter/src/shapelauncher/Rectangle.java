@@ -19,7 +19,10 @@ public class Rectangle extends Shape {
 	}
 	@Override
 	public boolean contains(Missile m) {
-		if(x-width < m.getXPosition() && x+width > m.getXPosition() && y-height < m.getYPosition() && y+height > m.getYPosition())
+		int realX = m.getXPosition() +10;
+		int realY = 450 - m.getYPosition() ;
+		if(x-width/2 < realX && x+width/2 > realX
+				&& y+height/2 > realY && y-height/2 < realY)
 			return true;
 		return false;
 	}
