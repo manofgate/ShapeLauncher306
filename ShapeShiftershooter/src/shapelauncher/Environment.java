@@ -64,17 +64,14 @@ public class Environment extends JPanel {
 			missile.getShape().draw(g);
 		target.draw(g);
 		if(path != null){
-			path.draw(g, frame);
+			path.draw(g);
 		}
 		//repaint();
 	}
 	
 	public void calculatePath(int mag, int angle){
-		path = new Path(mag, angle, gravity, 0 ,numStage);
+		path = new Path(mag, angle, gravity, wind, numStage);
 		repaint();
-	}
-	public void calculateRotation(){
-		
 	}
 	
 	public int getWind() {

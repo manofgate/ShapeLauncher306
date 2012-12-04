@@ -25,7 +25,7 @@ public class AnglePanel extends JPanel {
 	public double angle = 0;
 	public final JPanel panel;
 	int x = 25;
-	int y = 5;
+	int y = 540;
 	int size = 100;
 	AngleComponent anglePart;
 	public final JSlider magnitudeSlider;
@@ -46,8 +46,8 @@ public class AnglePanel extends JPanel {
 				try{
 					angle = angleSlider.getValue();
 					environment.launchMissile(magnitudeSlider.getValue(), (int) angleSlider.getValue());
-					environment.run();
-					environment.calculatePath(magnitudeSlider.getValue(), (int) angle);
+//					environment.run();
+					environment.calculatePath(magnitudeSlider.getValue(), (int) angleSlider.getValue());
 					environment.checkCollision();
 				} catch(NumberFormatException nfe){ }
 			}
