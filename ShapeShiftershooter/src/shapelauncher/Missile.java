@@ -35,17 +35,20 @@ public class Missile {
 		}
 	}
 
+	//Change the velocity of this missile based on an angle and magnitude
 	public void accelerateAngle(int magnitude, int angle) {
 		int dx = (int) (Math.cos(Math.toRadians(angle)) * magnitude);
 		int dy = (int) (Math.sin(Math.toRadians(angle)) * magnitude);
 		accelerate(dx, dy);
 	}
 
+	//Change the velocity of this missile
 	public void accelerate(int dx, int dy) {
 		velocityX += dx;
 		velocityY += dy;
 	}
 
+	//Move the missile given its current velocity.
 	public void run() {
 		move(velocityX, velocityY);
 		
@@ -65,6 +68,7 @@ public class Missile {
 		velocityY = 0;
 	}
 
+	//move
 	public void move(int dx, int dy) {
 		x += dx;
 		y += dy;

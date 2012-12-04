@@ -25,11 +25,13 @@ public class AnglePanel extends JPanel {
 	public double angle = 0;
 	public final JPanel panel;
 	int x = 25;
-	int y = 540;
+	int y = 360;
 	int size = 100;
 	AngleComponent anglePart;
 	public final JSlider magnitudeSlider;
 	private JSlider angleSlider;
+	private JLabel angleDisplay;
+	private JLabel magnitudeDisplay;
 	
 	
 	//Panel to represent the angle controls on the left of the screen.
@@ -67,13 +69,26 @@ public class AnglePanel extends JPanel {
 			@Override
 			public void stateChanged(ChangeEvent arg0) {
 				anglePart.setTheta(angleSlider.getValue());
+				angleDisplay.setText("" + angleSlider.getValue() + " degrees");
 			}
 		});
+		
+		angleDisplay = new JLabel("45 degrees");
 
 		JLabel magnitudeLabel = new JLabel("Choose Magnitude:");
 		
 		magnitudeSlider = new JSlider(0, 50);
 		magnitudeSlider.setValue(10);
+		
+		magnitudeSlider.addChangeListener(new ChangeListener() {
+			
+			@Override
+			public void stateChanged(ChangeEvent arg0) {
+				magnitudeDisplay.setText("" + magnitudeSlider.getValue() + " m/s");
+			}
+		});
+		
+		magnitudeDisplay = new JLabel("10 m/s");
 		
 		JLabel gravity = new JLabel("Gravity: " + environment.getGravity());
 		JLabel wind = new JLabel("Wind: " + environment.getWind());
@@ -85,9 +100,11 @@ public class AnglePanel extends JPanel {
 //		add(panel);
         add(angleLabel);
         add(angleSlider);
+        add(angleDisplay);
+		add(anglePart);
         add(magnitudeLabel);
 		add(magnitudeSlider);
-		add(anglePart);
+		add(magnitudeDisplay);
 	}
 	
 	public void paintComponent(Graphics g){
