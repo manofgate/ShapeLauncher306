@@ -17,10 +17,10 @@ public class Triangle extends Shape {
 	@Override
 	public void draw(Graphics g) {
 		p.reset();
-		p.addPoint(x, y);
-		p.addPoint(vertex1.x, vertex1.y);
+		p.addPoint(this.x, this.y);
+		p.addPoint(vertex1.x,  vertex1.y);
 		p.addPoint(vertex2.x, vertex2.y);
-		g.drawPolygon(p);
+		//g.drawPolygon(p);
 		g.fillPolygon(p);
 		
 	}

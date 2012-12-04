@@ -47,8 +47,16 @@ public class Missile {
 
 	public void run() {
 		move(velocityX, velocityY);
+		
 		shape.x = x+ 10;
 		shape.y = 450-y;
+		
+	if((shape instanceof Triangle)){
+			((Triangle) shape).vertex1.x = x+10-size;
+			((Triangle) shape).vertex2.x = x +10+size;
+			((Triangle) shape).vertex2.y = 450-y +size;
+			((Triangle) shape).vertex1.y = 450 -y + size;
+		}
 	}
 
 	public void stop() {
