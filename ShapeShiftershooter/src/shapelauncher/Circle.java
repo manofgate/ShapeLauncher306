@@ -22,8 +22,8 @@ public class Circle extends Shape {
 	public boolean contains(Missile m) {
 		int realX = m.getXPosition() +10;
 		int realY = 450 - m.getYPosition() ;
-		if(x-radius-5 < realX && x+radius+5 > realX
-				&& y+radius+5 > realY && y-radius-5 < realY)
+		if(x-radius-3 < realX && x+radius+3 > realX
+				&& y+radius+3 > realY && y-radius-3 < realY)
 			return true;
 		return false;
 	}

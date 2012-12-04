@@ -21,8 +21,8 @@ public class Rectangle extends Shape {
 	public boolean contains(Missile m) {
 		int realX = m.getXPosition() +10;
 		int realY = 450 - m.getYPosition() ;
-		if(x-width/2 -5 < realX && x+width/2 +5> realX
-				&& y+height/2 +5> realY && y-height/2 -5< realY)
+		if(x-width/2 -3 < realX && x+width/2 +3> realX
+				&& y+height/2 +3> realY && y-height/2 -3< realY)
 			return true;
 		return false;
 	}
