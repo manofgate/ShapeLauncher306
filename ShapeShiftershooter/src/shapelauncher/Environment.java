@@ -14,7 +14,7 @@ public class Environment extends JPanel {
 	private Shape target;
 	private int gravity;
 	private Path path;
-	private int numStage = 2;
+	private int numStage = 0;
 	private int size = 20;
 	Random rand = new Random();
 	private int frame;
