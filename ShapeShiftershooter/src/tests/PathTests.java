@@ -13,7 +13,7 @@ public class PathTests {
 
 	@Test
 	public void testPath1() {
-		Path path = new Path(5, 90, 5, 0);
+		Path path = new Path(5, 90, 5, 0, 0);
 		List<Point> points = path.getPoints();
 		Assert.assertTrue(points.contains(new Point(0, 0)));
 		Assert.assertTrue(points.contains(new Point(0, 5)));
@@ -22,7 +22,7 @@ public class PathTests {
 	
 	@Test
 	public void testPath2() {
-		Path path = new Path(20, 45, 14, -14);
+		Path path = new Path(20, 45, 14, -14, 0);
 		List<Point> points = path.getPoints();
 		Assert.assertTrue(points.contains(new Point(0, 0)));
 		Assert.assertTrue(points.contains(new Point(14, 14)));

@@ -1,5 +1,6 @@
 package shapelauncher;
 
+import java.awt.Graphics;
 import java.util.Random;
 
 public class Missile {
@@ -8,24 +9,27 @@ public class Missile {
 	private int velocityX, velocityY;
 	private int theta;
 	private Shape shape;
-	int which;
 	Random rand = new Random();
-	public Missile() {
-		x = 10;
-		y = 450;
+	private int size = 15;
+	int xDisp;
+	int yDisp;
+	public Missile(int nStage) {
+		x = 0;
+		y = 0;
 		velocityX = 0;
 		velocityY = 0;
 		theta = 0;
+		xDisp = x+10;
+		yDisp = y+450;
 		//rand.setSeed(rand.nextLong());
-		 which = rand.nextInt() %3;
-		if(which == 0){
-			shape = new Circle(x,y,10);
+		if(nStage == 0){
+			shape = new Circle(xDisp,yDisp,size);
 		}
-		else if(which == 1){
-			shape = new Rectangle(x, y, 10, 10);
+		else if(nStage == 1){
+			shape = new Rectangle(xDisp, yDisp, size, size);
 		}
 		else{
-			shape = new Triangle(x, y, x-10, y+10, x+10, y+10);
+			shape = new Triangle(xDisp, yDisp, xDisp-size, yDisp+size, xDisp+size, yDisp+size);
 		}
 	}
 
@@ -42,7 +46,9 @@ public class Missile {
 
 	public void run() {
 		move(velocityX, velocityY);
-
+		shape.x = x+ 10;
+		shape.y = y+450;
+		
 	}
 
 	public void stop() {

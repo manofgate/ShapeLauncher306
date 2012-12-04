@@ -22,7 +22,7 @@ public class AnglePanel extends JPanel{
 	int size = 100;
 	AngleComponent anglePart;
 	
-	public AnglePanel(Environment environment){
+	public AnglePanel(final Environment environment){
 		panel = new JPanel();
 		setPreferredSize(new Dimension(150, 500));
 		setLayout(new GridLayout(0,1));
@@ -38,6 +38,9 @@ public class AnglePanel extends JPanel{
 			public void actionPerformed(ActionEvent arg0) {
 				try{
 					angle = Double.parseDouble(inputedAngle.getText());
+					environment.launchMissile(25, (int) angle);
+					environment.run();
+					environment.calcuclatepath(25, (int) angle);
 				} catch(NumberFormatException nfe){
 					inputedAngle.setText("Sorry, I can't read that.");
 				}
