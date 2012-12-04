@@ -21,10 +21,15 @@ public class Environment extends JPanel {
 	
 	public Environment(){
 		//missile = new Missile(numStage%3);
-		int rx = rand.nextInt()%300 + 300;
-		int ry = rand.nextInt()%40 + 400;
 		wind = rand.nextInt(3);
 		gravity = rand.nextInt(2) + 1;
+		createTarget();
+		frame = 0;
+	}
+	
+	private void createTarget() {
+		int rx = rand.nextInt()%300 + 300;
+		int ry = rand.nextInt()%40 + 400;
 		if(numStage%3 ==0){
 			target = new Circle(rx, ry, size);
 		}
@@ -34,9 +39,8 @@ public class Environment extends JPanel {
 		else{
 			target = new Triangle(rx, ry, rx-size, ry+size, rx+size, ry+size);
 		}
-		frame = 0;
 	}
-	
+
 	public void run(){
 //		if(missile != null) {
 //			while(true){
@@ -126,6 +130,8 @@ public class Environment extends JPanel {
 		if(target.contains(missile)) {
 			System.out.println("word");
 			numStage++;
+			missile = null;
+			createTarget();
 		}
 	}
 	
